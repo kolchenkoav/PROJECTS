@@ -88,4 +88,25 @@ class CarTest {
         }
     }
 
+    /**
+     *
+     * public class Car {
+     *    private String testMethod(String a) {
+     *         return a;
+     *    }
+     * }
+     */
+    @Test
+    void testPrivateMethodWithArg() {
+        try {
+            // import java.lang.reflect.Method;
+            //                                                             if method has parameters ex.(String s) then String.class, else null
+            Method method = Car.class.getDeclaredMethod("testMethod", String.class);
+            method.setAccessible(true);
+            assertEquals("dsa", method.invoke(car, "dsa").toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -48,4 +48,8 @@ public class Car {
     private String testMethod() {
         return "ABS";
     }
+
+    private String testMethod(String a) {
+        return a;
+    }
 }
