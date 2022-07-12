@@ -1,13 +1,16 @@
 package javaunittest;
 
+//import com.sun.jdi.Method;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Method;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
-    Car car;
+    public Car car;
 
     @BeforeEach
     public void createCar() {
@@ -63,7 +66,15 @@ class CarTest {
         assertArrayEquals(new String[]{"Aleksey", "Marina"}, car.getOwners().toArray());
     }
 
-
-
+    @Test
+    void testPrivateMethod() {
+        try {
+            Method method = Car.class.getDeclaredMethod("testMethod", null);
+            method.setAccessible(true);
+            assertEquals("ABS", method.invoke(car).toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
