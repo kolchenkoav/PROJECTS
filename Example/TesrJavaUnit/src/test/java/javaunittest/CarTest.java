@@ -66,9 +66,20 @@ class CarTest {
         assertArrayEquals(new String[]{"Aleksey", "Marina"}, car.getOwners().toArray());
     }
 
+    /**
+     *
+     * public class Car {
+     *    private String testMethod() {
+     *         return "ABS";
+     *    }
+     * }
+     *
+     */
     @Test
     void testPrivateMethod() {
         try {
+            // import java.lang.reflect.Method;
+            //                                                             if method has parameters ex.(String s) then String.class, else null
             Method method = Car.class.getDeclaredMethod("testMethod", null);
             method.setAccessible(true);
             assertEquals("ABS", method.invoke(car).toString());
