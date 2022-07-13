@@ -1,0 +1,4 @@
+int value1, int value2, int result
+100, 2, 50
+12, 3, 4
+0, 10000, 0
