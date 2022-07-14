@@ -59,4 +59,63 @@ public class Main {
         }
         return bi;
     }
+
+    /**
+     * Merges two given sorted arrays into one
+     *
+     * @param a1 first sorted array
+     * @param a2 second sorted array
+     * @return new array containing all elements from a1 and a2, sorted
+     */
+    public static int[] mergeArrays(int[] a1, int[] a2) {
+        int fooLength = a1.length;
+        int barLength = a2.length;
+
+        int[] merged = new int[fooLength + barLength];
+
+        int fooPosition, barPosition, mergedPosition;
+        fooPosition = barPosition = mergedPosition = 0;
+
+        while(fooPosition < fooLength && barPosition < barLength) {
+            if (a1[fooPosition] < a2[barPosition]) {
+                merged[mergedPosition++] = a1[fooPosition++];
+            } else {
+                merged[mergedPosition++] = a2[barPosition++];
+            }
+        }
+
+        while (fooPosition < fooLength) {
+            merged[mergedPosition++] = a1[fooPosition++];
+        }
+
+        while (barPosition < barLength) {
+            merged[mergedPosition++] = a2[barPosition++];
+        }
+
+        return merged;
+    }
+    /*
+    Step 1:
+
+We start by comparing the elements in both the arrays, and we pick the smaller one.
+
+Merge Arrays First Step
+Then we increment the position in the first array.
+
+Step 2:
+
+Merge Arrays Second Step
+Here we increment the position in the second array and move on to the next element which is 8.
+
+Step 3:
+Merge Arrays Third Step
+
+At the end of this iteration, we've traversed all the elements of the first array.
+
+Step 4:
+
+In this step, we just copy all the remaining elements from the second array to result.
+
+Merge Arrays Fourth Step
+     */
 }
